@@ -1,22 +1,9 @@
-pipeline{
-    agent any
-    
-    stages{
-        stage('Checkout'){
-            steps{
-                git 'https://github.com/SwordJoe/hello-test.git'
-            }
-        }
-
-        stage('Build'){
-            steps{
-                sh 'g++ main.cc -o hello'
-            }
-        }
-
-        stage('Test'){
-            steps{
-                sh './hello'
+pipeline {
+    agent { docker 'python:3.5.1' }
+    stages {
+        stage('build') {
+            steps {
+                sh 'python --version'
             }
         }
     }
